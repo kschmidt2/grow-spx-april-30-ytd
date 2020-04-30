@@ -466,10 +466,10 @@
   }
   
   /* Plot bands and polar pane backgrounds */
-  // .highcharts-plot-band, .highcharts-pane {
-  //   fill: #000000;
-  //   fill-opacity: 0.05;
-  // }
+  .highcharts-plot-band, .highcharts-pane {
+    fill: $green-secondary-2;
+    fill-opacity: 0.5;
+  }
   
   // .highcharts-plot-line {
   //   fill: none;

@@ -12,26 +12,17 @@
 //     element[i].className += " social-square";
 // }
 
-// bolds the subhead if there is no headline
-let subhead = document.getElementsByClassName("chart-subhead"),
-    headline = document.getElementById("chart-head");
-    if (!headline) {
-        for(var i = 0; i < subhead.length; i++) {
-            subhead[i].style.fontWeight = "600";
-        }       
-     }
-
 Highcharts.setOptions({
     lang: {
       thousandsSep: ','
     }
 });
 
-let chartIdSpxMarch6 = document.getElementById("chart-container-spx-march6");
+let chartIdSpxApril30 = document.getElementById("chart-container-spx-april-30-ytd");
 
 // checks for the chart ID and displays a backup image if the browser can't find it
 setTimeout(function() {
-    if(chartIdSpxMarch6.innerHTML === "") {
+    if(chartIdSpxApril30.innerHTML === "") {
         // console.log('noId');
         let chartArea = document.getElementsByClassName("chart-area");
         for(var i = 0; i < chartArea.length; i++) {
@@ -45,7 +36,7 @@ setTimeout(function() {
 },500);
 
 function drawHighcharts() {
-    Highcharts.chart(chartIdSpxMarch6, {
+    Highcharts.chart(chartIdSpxApril30, {
         chart: {
             type: 'line',
             styledMode: true,
@@ -56,7 +47,7 @@ function drawHighcharts() {
             text: null
         },
         data: {
-            googleSpreadsheetKey: '1-S29jjxO31nZBIEWZsU86R6ldD4bz8hlDM_DGQu6iJ0'
+            googleSpreadsheetKey: '1J4Zlen3v10_WGNf3vD6HXvRjrnMznDEFE1uAZLIl0Q4'
         },
         // for line charts only
         plotOptions: {
@@ -84,11 +75,15 @@ function drawHighcharts() {
                     whiteSpace: 'nowrap'
                 }
             },
-            dateTimeLabelFormats: {
-                week: '%b. %e',
-            },
+            plotBands: [{
+                from: 1584897689000, // Start of the plot band
+                to: 1588180889000 // End of the plot band
+              }],
+            // dateTimeLabelFormats: {
+            //     week: '%b. %e',
+            // },
             tickLength: 5,
-            tickInterval: 24 * 3600 * 1000 * 7
+            // tickInterval: 24 * 3600 * 1000 * 7
         },
         yAxis: {
             title: false,
@@ -99,9 +94,6 @@ function drawHighcharts() {
                     return Highcharts.numberFormat(this.value,0,'.',',');
                 },
             },
-            max: 3600,
-            min: 2800,
-            tickAmount: 5
         },
         credits: {
             enabled: false
